@@ -40,6 +40,19 @@
 };
 
 / {
+    behaviors {
+        // Stock &sk releases the modifier on the *release* of the next key,
+        // so fast rollover typing can shift more than one key. quick-release
+        // instead releases it as soon as the next key is pressed.
+        sk_fast: sk_fast {
+            compatible = "zmk,behavior-sticky-key";
+            #binding-cells = <1>;
+            bindings = <&kp>;
+            release-after-ms = <1000>;
+            quick-release;
+        };
+    };
+
     combos {
         compatible = "zmk,combos";
         // I+U -> caps word
@@ -47,51 +60,64 @@
             timeout-ms = <50>;
             key-positions = <6 7>;
             bindings = <&caps_word>;
-            layers = <0>;
+            layers = <-1>;
         };
         // M+, -> backspace
         combo_bspc {
             timeout-ms = <50>;
             key-positions = <27 28>;
             bindings = <&kp BSPC>;
-            layers = <0>;
+            layers = <-1>;
         };
-        // R+T=( Y+U=)  F+G=[ H+J=]  V+B={ N+M=}
+        // E+D=( I+K=)  R+F={ U+J=}  T+G=[ Y+H=]
         combo_lpar {
             timeout-ms = <50>;
-            key-positions = <3 4>;
+            key-positions = <2 12>;
             bindings = <&kp LPAR>;
-            layers = <0>;
+            layers = <-1>;
         };
         combo_rpar {
             timeout-ms = <50>;
-            key-positions = <5 6>;
+            key-positions = <7 17>;
             bindings = <&kp RPAR>;
-            layers = <0>;
-        };
-        combo_lbkt {
-            timeout-ms = <50>;
-            key-positions = <13 14>;
-            bindings = <&kp LBKT>;
-            layers = <0>;
-        };
-        combo_rbkt {
-            timeout-ms = <50>;
-            key-positions = <15 16>;
-            bindings = <&kp RBKT>;
-            layers = <0>;
+            layers = <-1>;
         };
         combo_lbrc {
             timeout-ms = <50>;
-            key-positions = <24 25>;
+            key-positions = <3 13>;
             bindings = <&kp LBRC>;
-            layers = <0>;
+            layers = <-1>;
         };
         combo_rbrc {
             timeout-ms = <50>;
-            key-positions = <26 27>;
+            key-positions = <6 16>;
             bindings = <&kp RBRC>;
-            layers = <0>;
+            layers = <-1>;
+        };
+        combo_lbkt {
+            timeout-ms = <50>;
+            key-positions = <4 14>;
+            bindings = <&kp LBKT>;
+            layers = <-1>;
+        };
+        combo_rbkt {
+            timeout-ms = <50>;
+            key-positions = <5 15>;
+            bindings = <&kp RBKT>;
+            layers = <-1>;
+        };
+        // D+C -> copy, F+V -> paste
+        combo_copy {
+            timeout-ms = <50>;
+            key-positions = <12 23>;
+            bindings = <&kp LC(C)>;
+            layers = <-1>;
+        };
+        combo_paste {
+            timeout-ms = <50>;
+            key-positions = <13 24>;
+            bindings = <&kp LC(V)>;
+            layers = <-1>;
         };
     };
 
@@ -107,7 +133,7 @@ bindings = <
     &kp Q        &kp W        &kp E        &kp R        &kp T             &kp Y        &kp U        &kp I        &kp O        &kp P
     &kp A        &kp S        &kp D        &kp F        &kp G             &kp H        &kp J        &kp K        &kp L        &kp SEMI
 &kp ESC &mt LGUI Z   &mt LALT X   &mt LSFT C   &mt LCTL V   &kp B             &kp N        &mt RCTL M   &mt LSFT COMMA &mt LALT DOT &mt RGUI FSLH &kp SQT
-                                  &sk LSHFT    &lt NUM RET  &lt SYM TAB       &mo FUNC     &lt NAV SPACE &sk LSHFT
+                                  &sk_fast LSHFT &lt NUM RET  &lt SYM TAB     &mo FUNC     &lt NAV SPACE &sk_fast LSHFT
 >;
         };
 
@@ -118,8 +144,8 @@ bindings = <
 label = "NUM";
 bindings = <
     &kp N1       &kp N2       &kp N3       &kp N4       &kp N5            &kp N6       &kp N7       &kp N8       &kp N9       &kp N0
-    &kp EXCL     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT         &kp CARET    &kp AMPS     &kp ASTERISK &kp LPAR     &kp RPAR
-&trans  &none        &kp GRAVE    &kp TILDE    &kp PLUS     &kp UNDERSCORE    &kp MINUS    &kp EQUAL    &kp LBKT     &kp RBKT     &kp PIPE      &kp BSLH
+    &kp EXCL     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT         &kp CARET    &kp AMPS     &kp ASTERISK &none        &none
+&trans  &none        &kp GRAVE    &kp TILDE    &kp PLUS     &kp UNDERSCORE    &kp MINUS    &kp EQUAL    &none        &none        &kp PIPE      &kp BSLH
                                   &kp ESC      &lt NUM RET  &lt SYM TAB       &mo FUNC     &trans       &lt MISC DEL
 >;
         };
