@@ -8,4 +8,6 @@ include:
   - board: xiao_ble//zmk
     shield: totem_dongle prospector_adapter
     artifact-name: totem_dongle-xiao_ble-zmk
-# there is no settingsreset (needed) for the XIAO
+  - board: xiao_ble//zmk
+    shield: settings_reset
+    artifact-name: settings_reset-xiao_ble-zmk
