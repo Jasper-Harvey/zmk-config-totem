@@ -60,64 +60,54 @@
             timeout-ms = <50>;
             key-positions = <6 7>;
             bindings = <&caps_word>;
-            layers = <-1>;
         };
         // M+, -> backspace
         combo_bspc {
             timeout-ms = <50>;
             key-positions = <27 28>;
             bindings = <&kp BSPC>;
-            layers = <-1>;
         };
         // E+D=( I+K=)  R+F={ U+J=}  T+G=[ Y+H=]
         combo_lpar {
             timeout-ms = <50>;
             key-positions = <2 12>;
             bindings = <&kp LPAR>;
-            layers = <-1>;
         };
         combo_rpar {
             timeout-ms = <50>;
             key-positions = <7 17>;
             bindings = <&kp RPAR>;
-            layers = <-1>;
         };
         combo_lbrc {
             timeout-ms = <50>;
             key-positions = <3 13>;
             bindings = <&kp LBRC>;
-            layers = <-1>;
         };
         combo_rbrc {
             timeout-ms = <50>;
             key-positions = <6 16>;
             bindings = <&kp RBRC>;
-            layers = <-1>;
         };
         combo_lbkt {
             timeout-ms = <50>;
             key-positions = <4 14>;
             bindings = <&kp LBKT>;
-            layers = <-1>;
         };
         combo_rbkt {
             timeout-ms = <50>;
             key-positions = <5 15>;
             bindings = <&kp RBKT>;
-            layers = <-1>;
         };
         // D+C -> copy, F+V -> paste
         combo_copy {
             timeout-ms = <50>;
             key-positions = <12 23>;
             bindings = <&kp LC(C)>;
-            layers = <-1>;
         };
         combo_paste {
             timeout-ms = <50>;
             key-positions = <13 24>;
             bindings = <&kp LC(V)>;
-            layers = <-1>;
         };
     };
 
