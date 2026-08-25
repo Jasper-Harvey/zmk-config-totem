@@ -47,51 +47,61 @@
             timeout-ms = <50>;
             key-positions = <6 7>;
             bindings = <&caps_word>;
-            layers = <0>;
         };
         // M+, -> backspace
         combo_bspc {
             timeout-ms = <50>;
             key-positions = <27 28>;
             bindings = <&kp BSPC>;
-            layers = <0>;
         };
-        // R+T=( Y+U=)  F+G=[ H+J=]  V+B={ N+M=}
+        // Vertical (same-column) combos: F+R=( J+U=) G+T={ Y+H=} E+D=[ K+I=]
         combo_lpar {
             timeout-ms = <50>;
-            key-positions = <3 4>;
+            key-positions = <13 3>;
             bindings = <&kp LPAR>;
-            layers = <0>;
         };
         combo_rpar {
             timeout-ms = <50>;
-            key-positions = <5 6>;
+            key-positions = <16 6>;
             bindings = <&kp RPAR>;
-            layers = <0>;
-        };
-        combo_lbkt {
-            timeout-ms = <50>;
-            key-positions = <13 14>;
-            bindings = <&kp LBKT>;
-            layers = <0>;
-        };
-        combo_rbkt {
-            timeout-ms = <50>;
-            key-positions = <15 16>;
-            bindings = <&kp RBKT>;
-            layers = <0>;
         };
         combo_lbrc {
             timeout-ms = <50>;
-            key-positions = <24 25>;
+            key-positions = <14 4>;
             bindings = <&kp LBRC>;
-            layers = <0>;
         };
         combo_rbrc {
             timeout-ms = <50>;
-            key-positions = <26 27>;
+            key-positions = <5 15>;
             bindings = <&kp RBRC>;
-            layers = <0>;
+        };
+        combo_lbkt {
+            timeout-ms = <50>;
+            key-positions = <2 12>;
+            bindings = <&kp LBKT>;
+        };
+        combo_rbkt {
+            timeout-ms = <50>;
+            key-positions = <17 7>;
+            bindings = <&kp RBKT>;
+        };
+        // H+N -> delete
+        combo_del {
+            timeout-ms = <50>;
+            key-positions = <15 26>;
+            bindings = <&kp DEL>;
+        };
+        // D+C -> copy
+        combo_copy {
+            timeout-ms = <50>;
+            key-positions = <12 23>;
+            bindings = <&kp LC(C)>;
+        };
+        // F+V -> paste
+        combo_paste {
+            timeout-ms = <50>;
+            key-positions = <13 24>;
+            bindings = <&kp LC(V)>;
         };
     };
 
@@ -103,6 +113,7 @@
 // HOME: plain QWERTY, mods live on the bottom row (GUI/ALT/SHIFT/CTRL mirrored
 // out from center), ESC and ' on the bottom-row outer keys.
 label = "HOME";
+display-name = "Home";
 bindings = <
     &kp Q        &kp W        &kp E        &kp R        &kp T             &kp Y        &kp U        &kp I        &kp O        &kp P
     &kp A        &kp S        &kp D        &kp F        &kp G             &kp H        &kp J        &kp K        &kp L        &kp SEMI
@@ -116,6 +127,7 @@ bindings = <
         num_layer {
 // NUM: number row on top, shifted symbol directly below each number.
 label = "NUM";
+display-name = "Num";
 bindings = <
     &kp N1       &kp N2       &kp N3       &kp N4       &kp N5            &kp N6       &kp N7       &kp N8       &kp N9       &kp N0
     &kp EXCL     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT         &kp CARET    &kp AMPS     &kp ASTERISK &kp LPAR     &kp RPAR
@@ -128,6 +140,7 @@ bindings = <
 
         nav_layer {
 label = "NAV";
+display-name = "Nav";
 bindings = <
     &none        &none        &none        &none        &none             &kp HOME     &none        &none        &kp END      &none
     &kp LGUI     &kp LALT     &kp LCTRL    &kp LSHFT    &none             &kp LEFT     &kp DOWN     &kp UP       &kp RIGHT    &none
@@ -141,6 +154,7 @@ bindings = <
         sym_layer {
 // SYM: shifted mirror of NUM, everything sits above its NUM-layer counterpart.
 label = "SYM";
+display-name = "Sym";
 bindings = <
     &kp EXCL     &kp AT       &kp HASH     &kp DLLR     &kp PRCNT         &kp CARET    &kp AMPS     &kp ASTERISK &kp LPAR     &kp RPAR
     &none        &none        &none        &none        &none             &none        &kp UNDERSCORE &kp PLUS   &kp LBRC     &kp RBRC
@@ -153,6 +167,7 @@ bindings = <
 
         func_layer {
 label = "FUNC";
+display-name = "Func";
 bindings = <
     &kp F1       &kp F2       &kp F3       &kp F4       &kp F5            &kp F6       &kp F7       &kp F8       &kp F9       &kp F10
     &none        &none        &none        &kp F11      &kp F12           &none        &none        &none        &none        &none
@@ -167,6 +182,7 @@ bindings = <
 // MISC: empty in the QMK source (no RGB matrix on Totem) - repurposed to hold
 // reset/bootloader/BT controls, since it's otherwise unused.
 label = "MISC";
+display-name = "Misc";
 bindings = <
     &sys_reset   &bootloader  &bt BT_CLR   &bt BT_PRV   &bt BT_NXT        &out OUT_TOG &none        &none        &none        &none
     &none        &none        &none        &none        &none             &none        &none        &none        &none        &none
